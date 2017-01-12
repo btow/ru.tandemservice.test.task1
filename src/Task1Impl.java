@@ -43,7 +43,8 @@ public class Task1Impl implements IStringRowsListSorter {
             rows.sort((o1, o2) -> {
 
                 // определяем значения переменных, которые будут сравниваться
-                String so1 = stringValue(o1, columnIndex), so2 = stringValue(o2, columnIndex);
+                String so1 = stringValue(o1, columnIndex),
+                       so2 = stringValue(o2, columnIndex);
 
                 /** проверяем строки на равенство null:
                  * если so1 == null, а so2 != null, то resultOfCompare = -1;
@@ -105,7 +106,8 @@ public class Task1Impl implements IStringRowsListSorter {
                          */
                         int isao1 = Integer.parseInt(ssao1),
                             isao2 = Integer.parseInt(ssao2);
-                        return (isao1 < isao2) ? -1 : (isao1 == isao2) ? 0 : 1;
+                        resultOfCampare = (isao1 < isao2) ? -1 : (isao1 == isao2) ? 0 : 1;
+
 
                     } else {
 
@@ -115,9 +117,14 @@ public class Task1Impl implements IStringRowsListSorter {
                          */
                         resultOfCampare = ssao1.compareTo(ssao2);
                         resultOfCampare = (resultOfCampare < 0) ? -1 : (resultOfCampare == 0) ? 0 : 1;
-                        return resultOfCampare;
 
                     }
+
+                    // при совпадении продолжаем сравнивать
+                    if (resultOfCampare == 0) continue;
+
+                    // при несовпадении возвращаем результат
+                    return resultOfCampare;
 
                 }
 
